@@ -4,28 +4,28 @@ import PropTypes from 'prop-types';
 
 const OptionsColor = props => {
 
-    const prepareColorClassName = color => {
-        return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
-      };
+  const prepareColorClassName = color => {
+    return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
+  };
 
-    return (
-        <div className={styles.colors}>
-        <h3 className={styles.optionLabel}>Colors</h3>
-        <ul className={styles.choices}>
-          {props.colors.map(color => <li><button type="button" 
-                                            onClick={ () => props.setCurrentColor(color)} 
-                                            className={clsx(prepareColorClassName(color), 
-                                            color === props.currentColor && styles.active)} />
-                                      </li>)}
-        </ul>
-      </div>
-    );
+  return (
+    <div className={styles.colors}>
+      <h3 className={styles.optionLabel}>Colors</h3>
+      <ul className={styles.choices}>
+        {props.colors.map(color => <li><button type="button" 
+                                      onClick={ () => props.setCurrentColor(color)} 
+                                      className={clsx(prepareColorClassName(color), 
+                                      color === props.currentColor && styles.active)} />
+                                    </li>)}
+      </ul>
+    </div>
+  );
 };
 
 OptionsColor.propTypes = {
-    setCurrentColor: PropTypes.func.isRequired,
-    currentColor: PropTypes.string.isRequired,
-    colors: PropTypes.array.isRequired,
+  setCurrentColor: PropTypes.func.isRequired,
+  currentColor: PropTypes.string.isRequired,
+  colors: PropTypes.array.isRequired,
 };
 
 export default OptionsColor;

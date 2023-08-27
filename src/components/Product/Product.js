@@ -12,8 +12,7 @@ const Product = props => {
     <article className={styles.product}>
       <ProductImage name={props.name}
                     title={props.title}
-                    currentColor={currentColor} />
-                    
+                    currentColor={currentColor} />          
       <ProductOptions sizes={props.sizes}
                     colors={props.colors}
                     title={props.title}
