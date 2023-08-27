@@ -6,18 +6,14 @@ import styles from './ProductOptions.module.scss';
 import PropTypes from 'prop-types';
 
 const ProductOptions = props => {
-
-  const getPrice = (basePrice, currentSize) => {
-    return basePrice + currentSize.additionalPrice;
-  }
     
-  const sentOrder = (event, title, basePrice, currentSize, currentColor) => {
+  const sentOrder = (event, title, totalPrice, currentSizeName, currentColor) => {
     event.preventDefault();
     console.log(`
       ORDER SENT:
       Name: ${title}
-      Price: ${getPrice(basePrice, currentSize)}
-      Size: ${currentSize.name}
+      Price: ${totalPrice}
+      Size: ${currentSizeName}
       Color: ${currentColor}
     `);
     resetToDefault();
@@ -33,7 +29,7 @@ const ProductOptions = props => {
       <ProductHeader title={props.title}
                      currentSize={props.currentSize}
                      basePrice={props.basePrice}
-                     getPrice={getPrice}/>
+                     totalPrice={props.totalPrice}/>
       <form>
         <OptionsSize sizes={props.sizes}
                      currentSize={props.currentSize}
@@ -41,7 +37,7 @@ const ProductOptions = props => {
         <OptionsColor colors={props.colors}
                      currentColor={props.currentColor}
                      setCurrentColor={props.setCurrentColor}/>
-        <Button onClick={ (event) => sentOrder(event, props.title, props.basePrice, props.currentSize, props.currentColor)}
+        <Button onClick={ (event) => sentOrder(event, props.title, props.totalPrice, props.currentSize.name, props.currentColor)}
                      className={styles.button}>
                      <span className="fa fa-shopping-cart" />
         </Button>
@@ -53,6 +49,7 @@ const ProductOptions = props => {
 ProductOptions.propTypes = {
   title: PropTypes.string.isRequired,
   basePrice: PropTypes.number.isRequired,
+  totalPrice: PropTypes.number.isRequired,
   colors: PropTypes.array.isRequired,
   sizes: PropTypes.array.isRequired,
   currentSize: PropTypes.object.isRequired,
