@@ -7,14 +7,14 @@ import Button from '../Button/Button';
 const Product = props => {
 
   const [currentColor, setCurrentColor] = useState(props.colors[0]);
-  const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
+  const [currentSize, setCurrentSize] = useState(props.sizes[0]);
 
   const prepareColorClassName = color => {
     return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
   };
 
-  const getPrice = (basePrice, additionalPrice) => {
-    return basePrice;
+  const getPrice = (basePrice, currentSize) => {
+    return basePrice + currentSize.additionalPrice;
   }
 
   return (
