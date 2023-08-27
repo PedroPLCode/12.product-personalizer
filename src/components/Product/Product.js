@@ -1,4 +1,5 @@
 import { useState } from 'react';
+//import { useEffect } from 'react';
 import styles from './Product.module.scss';
 import clsx from 'clsx';
 import Button from '../Button/Button';
@@ -29,13 +30,22 @@ const Product = props => {
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
-              {props.sizes.map(size => <li><button type="button" className={styles.active}>{size.name}</button></li>)}
+              {props.sizes.map(size => <li><button type="button" 
+                                              onClick={ () => setCurrentSize(size)} 
+                                              className={clsx(size === currentSize && styles.active)}>
+                                                {size.name}
+                                            </button>
+                                        </li>)}
             </ul>
           </div>
           <div className={styles.colors}>
             <h3 className={styles.optionLabel}>Colors</h3>
             <ul className={styles.choices}>
-              {props.colors.map(color => <li><button type="button" className={clsx(prepareColorClassName(color), color === currentColor && styles.active)} /></li>)}
+              {props.colors.map(color => <li><button type="button" 
+                                                onClick={ () => setCurrentColor(color)} 
+                                                className={clsx(prepareColorClassName(color), 
+                                                color === currentColor && styles.active)} />
+                                          </li>)}
             </ul>
           </div>
           <Button className={styles.button}>
