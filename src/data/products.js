@@ -24,6 +24,21 @@ const productsData = [
       { name: 'L', additionalPrice: 3 },
       { name: 'XL', additionalPrice: 4 }
     ]
+  },
+  {
+    id: 3,
+    name: 'kodilla',
+    title: 'Kodilla shirt Extra',
+    basePrice: 30,
+    colors: ['black', 'red'],
+    sizes: [
+      { name: 'XS', additionalPrice: 0 },
+      { name: 'S', additionalPrice: 2 },
+      { name: 'M', additionalPrice: 4 },
+      { name: 'L', additionalPrice: 6 },
+      { name: 'XL', additionalPrice: 8 },
+      { name: 'XXL', additionalPrice: 10 }
+    ]
   }
 ];
 
