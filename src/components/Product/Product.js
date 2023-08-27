@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './Product.module.scss';
 import clsx from 'clsx';
+import ProductImage from '../ProductImage/ProductImage';
 import Button from '../Button/Button';
 
 const Product = props => {
@@ -31,12 +32,9 @@ const Product = props => {
 
   return (
     <article className={styles.product}>
-      <div className={styles.imageContainer}>
-        <img 
-          className={styles.image}
-          alt="Kodilla shirt"
-          src={`${process.env.PUBLIC_URL}/images/products/shirt-${props.name}--${currentColor}.jpg`} />
-      </div>
+      <ProductImage name={props.name}
+                    title={props.title}
+                    currentColor={currentColor} />
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
