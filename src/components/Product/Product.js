@@ -13,6 +13,10 @@ const Product = props => {
     return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
   };
 
+  const getPrice = (basePrice, additionalPrice) => {
+    return basePrice;
+  }
+
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
@@ -24,7 +28,7 @@ const Product = props => {
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
-          <span className={styles.price}>Price: {props.basePrice}$</span>
+          <span className={styles.price}>Price: {getPrice(props.basePrice, currentSize)}$</span>
         </header>
         <form>
           <div className={styles.sizes}>
