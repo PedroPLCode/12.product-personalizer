@@ -1,5 +1,4 @@
 import { useState } from 'react';
-//import { useEffect } from 'react';
 import styles from './Product.module.scss';
 import clsx from 'clsx';
 import Button from '../Button/Button';
@@ -16,6 +15,19 @@ const Product = props => {
   const getPrice = (basePrice, currentSize) => {
     return basePrice + currentSize.additionalPrice;
   }
+
+  const sentOrder = (event, title, basePrice, currentSize, currentColor) => {
+    event.preventDefault();
+    console.log(`
+      Your Order:
+      Name: ${title}
+      Price: ${getPrice(basePrice, currentSize)}
+      Size: ${currentSize.name}
+      Color: ${currentColor}
+    `);
+    setCurrentColor(props.colors[0]);
+    setCurrentSize(props.sizes[0]);
+  };
 
   return (
     <article className={styles.product}>
@@ -52,7 +64,8 @@ const Product = props => {
                                           </li>)}
             </ul>
           </div>
-          <Button className={styles.button}>
+          <Button onClick={ (event) => sentOrder(event, props.title, props.basePrice, currentSize, currentColor)}
+            className={styles.button}>
             <span className="fa fa-shopping-cart" />
           </Button>
         </form>
