@@ -13,6 +13,7 @@ const Product = props => {
       <ProductImage name={props.name}
                     title={props.title}
                     currentColor={currentColor} />
+                    
       <ProductOptions sizes={props.sizes}
                     colors={props.colors}
                     title={props.title}
