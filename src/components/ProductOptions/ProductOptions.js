@@ -1,3 +1,5 @@
+import OptionsSize from '../OptionsSize/OptionsSize';
+//import OptionsColor from '../OptionsColor/OptionsColor';
 import Button from '../Button/Button';
 import clsx from 'clsx';
 import styles from './ProductOptions.module.scss';
@@ -32,17 +34,11 @@ const ProductOptions = props => {
           <span className={styles.price}>Price: {getPrice(props.basePrice, props.currentSize)}$</span>
         </header>
         <form>
-          <div className={styles.sizes}>
-            <h3 className={styles.optionLabel}>Sizes</h3>
-            <ul className={styles.choices}>
-              {props.sizes.map(size => <li><button type="button" 
-                                              onClick={ () => props.setCurrentSize(size)} 
-                                              className={clsx(size === props.currentSize && styles.active)}>
-                                                {size.name}
-                                            </button>
-                                        </li>)}
-            </ul>
-          </div>
+
+          <OptionsSize sizes={props.sizes}
+                              currentSize={props.currentSize}
+                              setCurrentSize={props.setCurrentSize}/>
+
           <div className={styles.colors}>
             <h3 className={styles.optionLabel}>Colors</h3>
             <ul className={styles.choices}>
@@ -53,6 +49,7 @@ const ProductOptions = props => {
                                           </li>)}
             </ul>
           </div>
+          
           <Button onClick={ (event) => sentOrder(event, props.title, props.basePrice, props.currentSize, props.currentColor)}
             className={styles.button}>
             <span className="fa fa-shopping-cart" />
